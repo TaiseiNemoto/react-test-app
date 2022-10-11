@@ -1,5 +1,10 @@
 import { memo } from 'react';
+import { AnalogueClock } from '../Atoms/AnalogueClock';
 
 export const Clock = memo(() => {
-  return <p>Clockページです</p>;
+  return (
+    <>
+      <AnalogueClock />
+    </>
+  );
 });
