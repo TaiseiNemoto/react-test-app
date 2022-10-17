@@ -5,13 +5,25 @@ import { useClockHandDeg } from '../../hooks/useClockHandDeg';
 
 export const AnalogueClock = memo(() => {
   const { degHour, degMin, degSec } = useClockHandDeg();
-  console.log(degHour, degMin, degSec);
+  const degStyles = {
+    hHand: css`
+      rotate: ${degHour}deg;
+    `,
+
+    mHand: css`
+      rotate: ${degMin}deg;
+    `,
+
+    sHand: css`
+      rotate: ${degSec}deg;
+    `,
+  };
 
   return (
     <div className='AnalogueClock' css={styles.clockBase}>
-      <div className='h-hand' css={styles.hHand}></div>
-      <div className='m-hand' css={styles.mHand}></div>
-      <div className='s-hand' css={styles.sHand}></div>
+      <div className='h-hand' css={[styles.hHand, degStyles.hHand]}></div>
+      <div className='m-hand' css={[styles.mHand, degStyles.mHand]}></div>
+      <div className='s-hand' css={[styles.sHand, degStyles.sHand]}></div>
     </div>
   );
 });
