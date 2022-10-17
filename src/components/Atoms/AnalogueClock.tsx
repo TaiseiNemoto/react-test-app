@@ -1,9 +1,21 @@
 import { css } from '@emotion/react';
-import { memo, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useClockHandDeg } from '../../hooks/useClockHandDeg';
 
-export const AnalogueClock = memo(() => {
+export const AnalogueClock = () => {
+  const [now, setNow] = useState(new Date());
+  console.log(now);
+
+  useEffect(() => {
+    const intervalId = setInterval(function () {
+      setNow(new Date());
+    }, 1000);
+    return function () {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   const { degHour, degMin, degSec } = useClockHandDeg();
   const degStyles = {
     hHand: css`
@@ -18,6 +30,7 @@ export const AnalogueClock = memo(() => {
       rotate: ${degSec}deg;
     `,
   };
+  console.log(degSec);
 
   return (
     <div className='AnalogueClock' css={styles.clockBase}>
@@ -26,7 +39,7 @@ export const AnalogueClock = memo(() => {
       <div className='s-hand' css={[styles.sHand, degStyles.sHand]}></div>
     </div>
   );
-});
+};
 
 const commonStyle = {
   handCommon: css`

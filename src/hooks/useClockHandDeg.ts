@@ -9,5 +9,7 @@ export const useClockHandDeg = () => {
   const degMin = m * (360 / 60) + s * (360 / 60 / 60);
   const degSec = s * (360 / 60);
 
-  return { degHour, degMin, degSec, setDate };
+  console.log('aaa');
+
+  return { degHour, degMin, degSec };
 };
