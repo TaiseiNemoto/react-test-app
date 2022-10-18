@@ -21,6 +21,7 @@ const styles = {
     align-items: center;
     justify-content: space-between;
     padding: 0 30px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
   `,
   h1: css`
     font-size: 30px;
