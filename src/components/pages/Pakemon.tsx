@@ -1,17 +1,24 @@
 import { memo, useEffect, useState } from 'react';
 
 import { useFetchPokemons } from '../../hooks/useFetchPokemons';
+import { useFetchPokemonDetail } from '../../hooks/useFetchPokemonDetail';
 
 export const Pokemon = memo(() => {
   const { getPokemons, pokemonList } = useFetchPokemons();
+  const { getPokemonDetail } = useFetchPokemonDetail();
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getPokemons();
-    setLoading(false);
-  }, []);
+    const fetchPokemonData = async () => {
+      // 全てのポケモンデータを取得
+      getPokemons();
+      console.log(pokemonList);
 
-  console.log(pokemonList, 'test');
+      setLoading(false);
+    };
+    fetchPokemonData();
+  }, []);
 
   return (
     <div className='pokemonList'>
