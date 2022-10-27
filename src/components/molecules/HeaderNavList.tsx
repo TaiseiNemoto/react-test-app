@@ -20,6 +20,11 @@ export const HeaderNavList = memo(() => {
             Calendar
           </NavLink>
         </li>
+        <li>
+          <NavLink to='Pokemon' css={styles.navLink} style={({ isActive }) => (isActive ? activeStyle : undefined)}>
+            Pokemon
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
